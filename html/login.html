@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/framework7.material.min.css">
+    <link rel="stylesheet" href="../css/framework7.material.colors.min.css">
+    <style>
+
+    </style>
+</head>
+<body>
+	<div id="app">
+        <div class="content-block">
+            <p><a href="#" data-popup=".popup-about" class="open-popup">Open About Popup </a></p>
+            <p><a href="#" data-popup=".popup-services" class="open-popup">Open Services Popup </a></p>
+        </div>
+        <div class="popup popup-about" @click="dotest(this)">
+            <div class="content-block">
+                <p>api 测试</p>
+                <p><a href="#" class="close-popup">Close popup</a></p>
+                <p>api.version : {{ ver }}</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script src="../script/framework7.min.js"></script>
+<script src="../script/vue.min.js"></script>
+<script src="../script/framework7-vue.min.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+        var myApp = new Framework7();
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                ver   :  api.version ,
+                sType : ''
+            },
+            methods: {
+                dotest : function (this) {
+                    this.on('opened', function () {
+                        console.log('About Popup opened')
+                    });
+                }
+            },
+            computed: {}
+        })
+    }
+</script>
+</html>
